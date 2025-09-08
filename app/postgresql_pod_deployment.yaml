@@ -19,6 +19,11 @@ spec:
             ports:
               - containerPort: 5432
                 name: postgresport
+            env:
+              - name: POSTGRES_USER
+                value: postgres
+              - name: POSTGRES_PASSWORD
+                value: postgres
   selector:
     matchLabels:
       app: postgres-app
