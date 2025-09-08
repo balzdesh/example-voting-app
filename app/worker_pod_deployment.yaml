@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+  labels:
+    app: worker-app
+    tier: backend
+spec:
+  template:
+     metadata:
+        name: worker-app
+        labels:
+          app: worker-app
+          tier: backend
+     spec:
+        containers:
+          - name: worker-app
+            image: dockersamples/examplevotingapp_worker
+            ports:
+              - containerPort: 80
+                name: vote
+  selector:
+    matchLabels:
+      app: worker-app
+      tier: backend
+  replicas: 1
+
