@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-deployment
+  labels:
+    app: voting-app
+    tier: frontend
+spec:
+  template:
+     metadata:
+        name: voting-app
+        labels:
+          app: voting-app
+          tier: frontend
+     spec:
+        containers:
+          - name: voting-app
+            image: dockersamples/examplevotingapp_vote
+            ports:
+              - containerPort: 80
+                name: vote
+  selector:
+    matchLabels:
+      app: voting-app
+      tier: frontend
+  replicas: 3
