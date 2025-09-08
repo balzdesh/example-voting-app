@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vote-service
+  name: result-service
 spec:
   type: NodePort
   ports:
     - nodePort: 30080
-      targetPort: voteport
+      targetPort: resultport
       port: 80
   selector:
-      app: vote-app
+      app: result-app
       tier: frontend
